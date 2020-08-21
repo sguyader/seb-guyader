@@ -21,6 +21,7 @@ interests:
 - Sciences
 - Musique
 - Photographie
+name: Sébastien Guyader
 organizations:
 - name: INRAE
   url: "https://www.inrae.fr/centres/antilles-guyane"
@@ -40,9 +41,6 @@ social:
   link: https://www.linkedin.com/in/sebastien-guyader-8abb49125
   
 superuser: true
-title: Sébastien Guyader
-user_groups:
-- Researchers
 ---
 
 Mes centres d'intérêt sont les sciences, la musique et la photographie.

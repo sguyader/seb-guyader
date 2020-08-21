@@ -5,12 +5,12 @@
 
 [[main]]
   name = "Blog"
-  url = "blog"
+  url = "#last_blog"
   weight = 20
 
 [[main]]
   name = "R & data"
-  url = "project"
+  url = "#last_project"
   weight = 30
 
 [[main]]
@@ -19,14 +19,14 @@
   weight = 40
 
 [[main]]
-  name = "About"
+  name = "A propos"
   url = "about"
   weight = 50
 
-[[main]]
-  name = "Contact"
-  url = "contact"
-  weight = 60
+#[[main]]
+#  name = "Contact"
+#  url = "contact"
+#  weight = 60
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
