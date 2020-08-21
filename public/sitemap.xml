@@ -3,18 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/courses/example/example1/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
+    <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>/courses/example/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+    <loc>/skills/</loc>
   </url>
   
   <url>
-    <loc>/courses/example/example2/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
+    <loc>/contact/</loc>
   </url>
   
   <url>
@@ -33,23 +30,28 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/license/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/writing-technical-content/</loc>
+    <loc>/blog/writing-technical-content/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/courses/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>/publication-type/3/</loc>
     <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/admin/</loc>
+    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,17 +80,12 @@
   </url>
   
   <url>
-    <loc>/author/sebastien-guyader/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/</loc>
     <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/jupyter/</loc>
+    <loc>/blog/jupyter/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -100,16 +97,6 @@
   <url>
     <loc>/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/privacy/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/terms/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
@@ -143,7 +130,7 @@
   </url>
   
   <url>
-    <loc>/post/getting-started/</loc>
+    <loc>/blog/getting-started/</loc>
     <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -188,7 +175,7 @@
   </url>
   
   <url>
-    <loc>/post/2015-07-23-r-rmarkdown/</loc>
+    <loc>/blog/2015-07-23-r-rmarkdown/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
   
@@ -220,6 +207,10 @@
   <url>
     <loc>/publication/conference-paper/</loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/sebastien-guyader/</loc>
   </url>
   
 </urlset>

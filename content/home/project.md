@@ -5,17 +5,17 @@
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 60  # Order that this section will appear.
+weight = 15  # Order that this section will appear.
 
-title = "Recent Posts"
+title = "R & data"
 subtitle = ""
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
-  page_type = "post"
+  page_type = "project"
   
   # Choose how much pages you would like to display (0 = all pages)
-  count = 5
+  count = 0
   
   # Choose how many pages you would like to offset by
   offset = 0
@@ -58,6 +58,10 @@ subtitle = ""
 
   # Text color (true=light or false=dark).
   # text_color_light = true  
+
+[design.spacing]
+  # Customize the section spacing. Order is top, right, bottom, left.
+  padding = ["20px", "0", "20px", "0"]
   
 [advanced]
  # Custom CSS. 

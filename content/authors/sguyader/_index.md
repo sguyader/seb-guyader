@@ -1,6 +1,6 @@
 ---
 authors:
-- admin
+- sguyader
 bio: Mes centres d'intérêt sont les sciences, la musique et la photographie.
 education:
   courses:
