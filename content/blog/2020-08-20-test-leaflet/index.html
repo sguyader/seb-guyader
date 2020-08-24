@@ -1,0 +1,57 @@
+---
+title: Photo et carto
+author: Sébastien Guyader
+date: '2020-08-20'
+slug:
+categories:
+  - R
+tags:
+  - R Markdown
+  - photo
+  - cartographie
+  - leaflet
+summary: 'Comment ajouter un widget leaflet pour afficher la localisation de photos sur un fond de carte OpenStreetMap'
+authors: []
+external_link: ''
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>Récemment sur <a href="https://www.r-bloggers.com/">R bloggers</a>, je suis tombé sur un article montrant comment placer des photos sur un fond de carte OpenStreetMap à partir des coordonnées GPS présentes dans les métadonnées (exif).
+Tout cela en utilisant des outils libres :
+* pour les photos :
+* digikam pour intégrer les coordonées GPS aux images
+* ART pour convertir les images raw en jpg
+* pour le reste :
+* R &amp; R Studio pour</p>
+<pre class="r"><code>files &lt;- dir(&quot;venise&quot;, full.names=T)
+df &lt;- data.frame(exif_read(files, tags = c(&quot;Location&quot;,&quot;GPSLatitude&quot;,&quot;GPSLongitude&quot;)))
+
+#links &lt;- read.table(&quot;links.txt&quot;, col.names=&quot;links&quot;)
+
+data_df &lt;- df[,c(&quot;GPSLatitude&quot;,&quot;GPSLongitude&quot;)]
+images &lt;- as.character(df$SourceFile)
+
+m &lt;- leaflet(data_df) %&gt;%
+  addTiles() %&gt;%
+  addCircleMarkers(
+    fillOpacity = 0.6, radius = 4,
+    lng = ~GPSLongitude, lat =~GPSLatitude, 
+    popup = popupImage(images, src=&quot;local&quot;, embed=T),
+  )</code></pre>
+<pre class="r"><code>frameWidget(m)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/blog/2020-08-20-test-leaflet/index_files/figure-html//widgets/widget_widget.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>

@@ -1,0 +1,67 @@
+---
+title: Photo et carto
+author: Sébastien Guyader
+date: '2020-08-20'
+slug:
+categories:
+  - R
+tags:
+  - R Markdown
+  - photo
+  - cartographie
+  - leaflet
+summary: 'Comment ajouter un widget leaflet pour afficher la localisation de photos sur un fond de carte OpenStreetMap'
+authors: []
+external_link: ''
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+
+
+```{r options, include=FALSE}
+library(tidyverse)
+library(leaflet)
+library(leafpop)
+library(htmlwidgets)
+library(widgetframe)
+library(exiftoolr)
+```
+
+Récemment sur [R bloggers](https://www.r-bloggers.com/), je suis tombé sur un article montrant comment placer des photos sur un fond de carte OpenStreetMap à partir des coordonnées GPS présentes dans les métadonnées (exif).
+Tout cela en utilisant des outils libres :
+* pour les photos :
+  * digikam pour intégrer les coordonées GPS aux images
+  * ART pour convertir les images raw en jpg
+* pour le reste :
+  * R & R Studio pour 
+
+```{r, warning=FALSE, message=FALSE}
+files <- dir("venise", full.names=T)
+df <- data.frame(exif_read(files, tags = c("Location","GPSLatitude","GPSLongitude")))
+
+#links <- read.table("links.txt", col.names="links")
+
+data_df <- df[,c("GPSLatitude","GPSLongitude")]
+images <- as.character(df$SourceFile)
+
+m <- leaflet(data_df) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    fillOpacity = 0.6, radius = 4,
+    lng = ~GPSLongitude, lat =~GPSLatitude, 
+    popup = popupImage(images, src="local", embed=T),
+  )
+```
+
+```{r widget}
+frameWidget(m)
+```
+
+
