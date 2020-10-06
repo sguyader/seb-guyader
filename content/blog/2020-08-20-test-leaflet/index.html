@@ -31,12 +31,20 @@ slides: ''
 
 
 <p>Récemment sur <a href="https://www.r-bloggers.com/">R bloggers</a>, je suis tombé sur un article montrant comment placer des photos sur un fond de carte OpenStreetMap à partir des coordonnées GPS présentes dans les métadonnées (exif).
-Tout cela en utilisant des outils libres :
-* pour les photos :
-* digikam pour intégrer les coordonées GPS aux images
-* ART pour convertir les images raw en jpg
-* pour le reste :
-* R &amp; R Studio pour</p>
+Tout cela en utilisant des outils libres :</p>
+<ul>
+<li>pour les photos :
+<ul>
+<li><code>digikam</code> pour intégrer les coordonées GPS aux images</li>
+<li><code>ART</code> pour convertir les images raw en jpg</li>
+</ul></li>
+<li>pour le reste :
+<ul>
+<li><code>R Studio</code> pour écrire les pages en language <code>rmarkdown</code></li>
+<li><code>R</code> et quelques librairies pour générer une table listant les photos, et leurs coordonnées GPS (via <code>exiftool</code>)</li>
+<li><code>pandoc</code> pour convertir les pages <code>rmarkdown</code> en pages HTML</li>
+</ul></li>
+</ul>
 <pre class="r"><code>files &lt;- dir(&quot;venise&quot;, full.names=T)
 df &lt;- data.frame(exif_read(files, tags = c(&quot;Location&quot;,&quot;GPSLatitude&quot;,&quot;GPSLongitude&quot;)))
 
@@ -55,3 +63,4 @@ m &lt;- leaflet(data_df) %&gt;%
 <pre class="r"><code>frameWidget(m)</code></pre>
 <div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/blog/2020-08-20-test-leaflet/index_files/figure-html//widgets/widget_widget.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p>Sur cette carte vous pouvez cliquer zoomer, et cliquer pour afficher les vignettes des photos. Pour voir les photos en taille originale, faites un clic droit et faites afficher l’image.</p>
