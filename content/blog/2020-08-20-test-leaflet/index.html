@@ -78,7 +78,7 @@ m &lt;- leaflet(data_df, height=600) %&gt;%
   )
 
 for (i in 1:length(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]])){
-  m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]] &lt;- str_replace_all(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]], &quot;../graphs&quot;, &quot;../../../../venise&quot;)
+  m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]] &lt;- str_replace_all(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]], &quot;../graphs&quot;, &quot;../../../venise&quot;)
 }</code></pre>
 <pre class="r"><code>frameWidget(m)</code></pre>
 <div id="htmlwidget-1" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
