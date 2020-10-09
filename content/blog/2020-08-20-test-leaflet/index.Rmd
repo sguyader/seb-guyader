@@ -24,16 +24,6 @@ url_video: ''
 slides: ''
 ---
 
-
-```{r options, include=FALSE}
-library(tidyverse)
-library(leaflet)
-library(leafpop)
-library(htmlwidgets)
-library(widgetframe)
-library(exiftoolr)
-```
-
 Récemment sur [R bloggers](https://www.r-bloggers.com/), je suis tombé sur un article montrant comment placer des photos sur un fond de carte OpenStreetMap à partir des coordonnées GPS présentes dans les métadonnées (exif).
 Tout cela en utilisant des outils libres :
 
@@ -45,6 +35,18 @@ Tout cela en utilisant des outils libres :
   + `R` et quelques librairies pour générer une table listant les photos, et leurs coordonnées GPS (via `exiftool`)
   + `pandoc` pour convertir les pages `rmarkdown` en pages HTML
 
+Voici le liste des libraies R utilisées :
+
+```{r options, include=T}
+library(tidyverse)
+library(leaflet)
+library(leafpop)
+library(htmlwidgets)
+library(widgetframe)
+library(exiftoolr)
+```
+
+Maintenant, le code :
 
 ```{r, warning=FALSE, message=FALSE}
 files <- dir("venise", full.names=T)
@@ -55,18 +57,22 @@ df <- data.frame(exif_read(files, tags = c("Location","GPSLatitude","GPSLongitud
 data_df <- df[,c("GPSLatitude","GPSLongitude")]
 images <- as.character(df$SourceFile)
 
-m <- leaflet(data_df) %>%
+m <- leaflet(data_df, height=600) %>%
   addTiles() %>%
   addCircleMarkers(
-    fillOpacity = 0.6, radius = 4,
+    fillOpacity = 0.6, radius = 3,
     lng = ~GPSLongitude, lat =~GPSLatitude, 
-    popup = popupImage(images, src="local", embed=T),
+    popup = popupImage(images, src="local", embed=F),
   )
+
+for (i in 1:length(m[["x"]][["calls"]][[2]][["args"]][[9]])){
+  m[["x"]][["calls"]][[2]][["args"]][[9]][[i]] <- str_replace_all(m[["x"]][["calls"]][[2]][["args"]][[9]][[i]], "../graphs", "../../../../venise")
+}
+
 ```
 
 ```{r widget}
 frameWidget(m)
 ```
 
-Sur cette carte vous pouvez cliquer zoomer, et cliquer pour afficher les vignettes des photos. Pour voir les photos en taille originale, faites un clic droit et faites afficher l'image.
-
+Sur cette carte vous pouvez cliquer zoomer, et cliquer pour afficher les vignettes des photos. Pour voir les photos en taille originale, faites un clic droit et faites afficher l'image
