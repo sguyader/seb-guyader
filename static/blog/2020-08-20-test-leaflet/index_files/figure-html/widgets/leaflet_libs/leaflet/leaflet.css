@@ -469,7 +469,6 @@
 	border-radius: 12px;
 	}
 .leaflet-popup-content {
-	width: 1000px !important;
 	margin: 13px 19px;
 	line-height: 1.4;
 	}

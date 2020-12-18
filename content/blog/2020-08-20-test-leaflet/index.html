@@ -69,18 +69,19 @@ df &lt;- data.frame(exif_read(files, tags = c(&quot;Location&quot;,&quot;GPSLati
 data_df &lt;- df[,c(&quot;GPSLatitude&quot;,&quot;GPSLongitude&quot;)]
 images &lt;- as.character(df$SourceFile)
 
-m &lt;- leaflet(data_df, height=600) %&gt;%
+m &lt;- leaflet(data_df, height=700) %&gt;%
   addTiles() %&gt;%
   addCircleMarkers(
     fillOpacity = 0.6, radius = 3,
     lng = ~GPSLongitude, lat =~GPSLatitude, 
-    popup = popupImage(images, src=&quot;local&quot;, embed=F),
+    popup = popupImage(images, src=&quot;local&quot;, embed=F, width=400),
+    popupOptions = popupOptions(maxWidth = 1000, keepInView=T)
   )
 
 for (i in 1:length(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]])){
-  m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]] &lt;- str_replace_all(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]], &quot;../graphs&quot;, &quot;../../../venise&quot;)
+  m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]] &lt;- str_replace_all(m[[&quot;x&quot;]][[&quot;calls&quot;]][[2]][[&quot;args&quot;]][[9]][[i]], &quot;../graphs&quot;, &quot;../../../../venise&quot;)
 }</code></pre>
 <pre class="r"><code>frameWidget(m)</code></pre>
-<div id="htmlwidget-1" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
+<div id="htmlwidget-1" style="width:100%;height:700px;" class="widgetframe html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/blog/2020-08-20-test-leaflet/index_files/figure-html//widgets/widget_widget.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 <p>Sur cette carte vous pouvez cliquer zoomer, et cliquer pour afficher les vignettes des photos. Pour voir les photos en taille originale, faites un clic droit et faites afficher l’image</p>

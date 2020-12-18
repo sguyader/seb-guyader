@@ -57,16 +57,17 @@ df <- data.frame(exif_read(files, tags = c("Location","GPSLatitude","GPSLongitud
 data_df <- df[,c("GPSLatitude","GPSLongitude")]
 images <- as.character(df$SourceFile)
 
-m <- leaflet(data_df, height=600) %>%
+m <- leaflet(data_df, height=700) %>%
   addTiles() %>%
   addCircleMarkers(
     fillOpacity = 0.6, radius = 3,
     lng = ~GPSLongitude, lat =~GPSLatitude, 
-    popup = popupImage(images, src="local", embed=F),
+    popup = popupImage(images, src="local", embed=F, width=400),
+    popupOptions = popupOptions(maxWidth = 1000, keepInView=T)
   )
 
 for (i in 1:length(m[["x"]][["calls"]][[2]][["args"]][[9]])){
-  m[["x"]][["calls"]][[2]][["args"]][[9]][[i]] <- str_replace_all(m[["x"]][["calls"]][[2]][["args"]][[9]][[i]], "../graphs", "../../../venise")
+  m[["x"]][["calls"]][[2]][["args"]][[9]][[i]] <- str_replace_all(m[["x"]][["calls"]][[2]][["args"]][[9]][[i]], "../graphs", "../../../../venise")
 }
 
 ```
